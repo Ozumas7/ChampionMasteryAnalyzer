@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+{% block head %}
+{{ parent() }}
+{% endblock %}
+{% block content %}
+<article class="best_average_champ">
+<h3>Most Total Champions Mastery points</h3>
+<table id="most_points">
+    <thead>
+    <tr>
+        <th>Champion</th>
+        <th>Total Mastery Points</th>
+        <th>Average Mastery Points</th>
+        <th>Entries</th>
+        <th>Win ratio</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for bestChamp in champs.most|slice(0,5) %}
+    <tr>
+        <td>
+            <a href="{{championLink(bestChamp.Id)}}">{{getChampImage(bestChamp.Id,30)}}
+                <b>{{champName(bestChamp.Id)}}</b></a>
+        </td>
+        <td>
+            {{bestChamp.Points}}
+        </td>
+        <td>
+            {{round(bestChamp.Points/ bestChamp.Entries,0)}}
+        </td>
+        <td>
+            {{bestChamp.Entries}}
+            </td>
+        <td>
+            {{round((bestChamp.Totalsessionswon*100)/bestChamp.Totalsessionsplayed,0)}}%
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</article>
+<article class="best_average_champ">
+    <h3>Most Average Champions Mastery points</h3>
+    <table id="most_average">
+        <thead>
+        <tr>
+            <th>Champion</th>
+            <th>Total Mastery Points</th>
+            <th>Average Mastery Points</th>
+            <th>Entries</th>
+            <th>Win ratio</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for bestChamp in champs.average|slice(0,5) %}
+        <tr>
+            <td>
+                <a href="{{championLink(bestChamp.Id)}}">{{getChampImage(bestChamp.Id,30)}}
+                    <b>{{champName(bestChamp.Id)}}</b></a>
+            </td>
+            <td>
+                {{bestChamp.Points}}
+            </td>
+            <td>
+                {{round(bestChamp.Points/ bestChamp.Entries,0)}}
+            </td>
+            <td>
+                {{bestChamp.Entries}}
+            </td>
+            <td>
+                {{round((bestChamp.Totalsessionswon*100)/bestChamp.Totalsessionsplayed,0)}}%
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</article>
+<div>
+<small><a href="{{serverHost}}/statistics">You can take a look or all champion statistics clicking here</a></small>
+</div>
+<article id="pick_champion" class="pick_champion">
+<h2>Pick a Champion for more statistics of Champion Mastery</h2>
+    {% for bestChamp in champs.all %}
+    <div class="individual_champ">
+        <a href="{{championLink(bestChamp.id)}}"> <b>{{bestChamp.name}}</b>
+                {{getChampImage(bestChamp.id,60)}}
+           </a>
+    </div>
+    {% endfor %}
+</article>
+{% endblock %}

@@ -1,0 +1,34 @@
+{
+  "name": "kolter/rankedsimulator",
+  "description": "A ranked match simulator of League of Legends based on mastery points and done in PHP",
+  "keywords": ["league of legends","lol","api","rankedsimulator","kolter"],
+  "homepage": "https://github.com/Ozumas7/rankedsimulator",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Pablo Luna",
+      "email": "skyluna7@gmail.com"
+    }
+  ],
+  "require": {
+    "php" : "^5.5.9",
+    "symfony/http-foundation" : "v3.0.4",
+    "symfony/yaml": "3.0.1",
+    "tedivm/stash": "^0.14",
+    "guzzlehttp/guzzle": "~6.0",
+    "monolog/monolog": "~1.19",
+    "propel/propel": "~2.0@dev",
+    "kolter/plol" : "dev-master",
+    "twig/twig": "~1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kolter\\Website\\": "src/website",
+      "Kolter\\DataProcessing\\": "src/dataprocessing",
+      "Kolter\\DataBase\\": "src/database"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": { "Kolter\\RankedSimulator\\Tests\\": "tests/" }
+  }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% block head %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{serverHost}}/public/img/favicon.png">
+    <link href='https://fonts.googleapis.com/css?family=Poppins:300' rel='stylesheet' type='text/css'>
+    <link href="{{ serverHost}}/public/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="{{ serverHost}}/public/js/app.js"></script>
+    <script src="{{ serverHost}}/public/js/tablesorter.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{{serverHost}}/public/js/charts.js"></script>
+    <title>ChampionMasterAnalyzer</title>
+    <script>
+        var serverHost = "{{serverHost}}";
+    </script>
+</head>
+<body>
+<div class="wrapper">
+<header class="header">
+    <h1><a href="{{ serverHost}}/">ChampionMasteryAnalyzer</a></h1>
+    <nav>
+        <ul>
+            <li><a href="{{ serverHost}}/">Home</a></li>
+            <li><a href="{{ serverHost}}/faq">Faq</a></li>
+            <li><a href="{{serverHost}}/statistics">Statistics</a></li>
+            <li><a href="//github.com/Ozumas7/championmasteryanalyzer">Github page</a></li>
+        </ul>
+    </nav>
+    <article>
+        <form method="get" name="search_form" action="{{serverHost}}/search">
+        <input type="search" size="30" placeholder="Champion or Summoner" name="search">
+        <select name="region" title="region" >
+            <option value="br">br</option>
+            <option value="eune">eune</option>
+            <option value="euw" selected>euw</option>
+            <option value="jp">jp</option>
+            <option value="kr">kr</option>
+            <option value="lan">lan</option>
+            <option value="las">las</option>
+            <option value="na">na</option>
+            <option value="oce">oce</option>
+            <option value="ru">ru</option>
+            <option value="tr">tr</option>
+        </select>
+            <button type="submit"class="button"><i class="fa fa-search"></i></button>
+        </form>
+    </article>
+</header>
+{% endblock %}
+<main>
+    {% block content %}
+
+
+    <section>
+        <h1>ChampionMasteryAnalyzer {% if title %} - {{title}} {% endif %}</h1>
+        <article>
+            <table>
+                <thead>
+                <tr></tr>
+                </thead>
+                <tbody>
+                <tr></tr>
+                </tbody>
+            </table>
+        </article>
+    </section>
+    {% endblock %}
+    <footer>
+        <small>ChampionAnalyzer isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or
+            anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are
+            trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</small>
+
+    </footer>
+</main>
+</div>
+</body>
+
+</html>

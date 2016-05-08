@@ -1,0 +1,45 @@
+index:
+  method:  'GET'
+  route: '/{nada}'
+  callback: 'Kolter\Website\Controllers\Home::home'
+  params:
+    nada: '$'
+search:
+  method:  'GET'
+  route: '/search{key}'
+  callback: 'Kolter\Website\Controllers\SearchController::summonerOrChampion'
+  params:
+    key: '(.*)'
+user:
+  method:  'GET'
+  route: '/champion/{key}'
+  callback: 'Kolter\Website\Controllers\ChampionController::show'
+  params:
+    key: '(.*)'
+summoner:
+  method:  'GET'
+  route: '/summoner/{key}/{region}'
+  callback: 'Kolter\Website\Controllers\SummonerController::show'
+  params:
+    key: '(.*)'
+    region: '([a-zA-Z]{2,5})'
+statistics:
+  method:  'GET'
+  route: '/statistics{nada}'
+  callback: 'Kolter\Website\Controllers\StatisticsController::show'
+  params:
+    nada: '$'
+agreggator:
+  method:  'GET'
+  route: '/processing{nada}'
+  callback: 'Kolter\Website\Controllers\Tasker::task'
+  params:
+    nada: '$'
+faq:
+  method:  'GET'
+  route: '/faq{nada}'
+  callback: 'Kolter\Website\Controllers\FaqController::show'
+  params:
+    nada: '$'
+default:
+  callback: 'Kolter\Website\Controllers\ErrorController::notFound'

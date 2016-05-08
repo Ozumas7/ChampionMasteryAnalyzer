@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block head %}
+{{ parent() }}
+{% endblock %}
+{% block content %}
+<h1>Login</h1>
+<form method="post" action="/login">
+    <input type="text" name="username" title="Username" placeholder="Username">
+    <input type="password" name="password" title="Password">
+    <input type="submit" value="Enviar"/>
+</form>
+{% endblock %}

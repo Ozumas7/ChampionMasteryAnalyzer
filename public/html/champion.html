@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block head %}
+{{ parent() }}
+{% endblock %}
+{% block content %}
+<section class="champion_details" style="background-image:
+ url({{randomSkin(champion.key,champion.skins)}});border-radius:9px;
+ background-repeat:no-repeat">
+   <article class="champion_info">
+       <div class="champion_info_image">
+    <a href="{{championLink(champion.id)}}">{{getChampImage(champion.id,100)}}
+        <b>{{champName(bestChamp.Champion)}}</b></a>
+       <h1>{{champion.name}} </h1>
+       </div>
+   </article>
+    <article class="champion_stats">
+        <h2>Stats</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Entries Analyzed of {{champion.name}}</th>
+                <th>Win ratio total avg.</th>
+                <th>Games played avg. per summoner</th>
+                <th>Kills avg. per game</th>
+                <th>Assists avg. per game</th>
+                <th>Deaths avg. per game</th>
+                <th>Champion Mastery points total avg.</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{total}} ({{percent(total_entries,total)}}% ) of {{total_entries}} total entries</td>
+                <td>{{round(stats.Winratio/total)}}%</td>
+                <td>{{round(stats.Totalsessionsplayed/total,0)}}</td>
+                <td>{{round((stats.Totalchampionkills/total)/round(stats.Totalsessionsplayed/total,0),2)}}</td>
+                <td>{{round((stats.Totalassists/total)/round(stats.Totalsessionsplayed/total,0),2)}}</td>
+                <td>{{round((stats.Totaldeathspersession/total)/round(stats.Totalsessionsplayed/total,0),2)}}</td>
+                <td>{{round(stats.Points/total,0)}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </article>
+</section>
+<h1>Charts</h1>
+<article class="home_rows">
+    <h3>Mastery champion points / Win Ratio</h3>
+<div id="winratio_chart" class="chart"></div>
+</article>
+<article class="home_rows">
+    <h3>Mastery champion points / Total KDA</h3>
+    <div id="kda_chart" class="chart"></div>
+</article>
+<article class="home_rows">
+    <h3>Mastery champion points / Gold earned per Match</h3>
+    <div id="gold_chart" class="chart"></div>
+</article>
+<article class="home_rows">
+    <h3>Mastery champion points / Gold earned per Match</h3>
+    <div id="played_chart" class="chart"></div>
+</article>
+
+
+<script>
+    var winratiopoints =[{% for data in points %} [{{data['interval']}},{{data['Winratio']}}], {% endfor %}];
+    var goldpoints = [{% for data in points %} [{{data['interval']}},{{data['Totalgoldearned']/data['Totalsessionsplayed']}}], {% endfor %}];
+    var kdapoints = [{% for data in points %} [{{data['interval']}},{{round((data['Totalchampionkills']+data['Totalassists'])/min(data['Totaldeathspersession'],1),2)}}], {% endfor %}];
+    var matchespoints = [{% for data in points %} [{{data['interval']}},{{data['Totalsessionsplayed']}}], {% endfor %}];
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawGraphics);
+</script>
+{% endblock %}

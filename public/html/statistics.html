@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block head %}
+{{ parent() }}
+{% endblock %}
+{% block content %}
+<h1>All champions statistics</h1>
+<table class="table_statistics">
+    <thead>
+    <tr>
+        <th>Champion</th>
+        <th>Total Champion Mastery Points</th>
+        <th>Champion Mastery Points avg.</th>
+        <th>WinRatio avg.</th>
+        <th>Kills avg.</th>
+        <th>Deaths avg.</th>
+        <th>Assists avg.</th>
+        <th>Kda avg.</th>
+        <th>Gold Earned avg.</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for champion in champions%}
+    <tr>
+        <td> <a href="{{championLink(champion.Id)}}">{{getChampImage(champion.Id,40)}}
+            <b>{{champName(champion.Id)}}</b></a></td>
+        <td>{{champion.Points}}</td>
+        <td>{{round((champion.Points/champion.Entries),0)}}</td>
+        <td>{{round(champion.Winratio/champion.Entries,0)}}</td>
+        <td>{{round(champion.Totalchampionkills/champion.Entries/round(champion.Totalsessionsplayed/champion.Entries,0),0)}}</td>
+        <td>{{round((champion.Totaldeathspersession/champion.Entries)/round(champion.Totalsessionsplayed/champion.Entries,0),0)}}</td>
+        <td>{{round(champion.Totalassists/champion.Entries/round(champion.Totalsessionsplayed/champion.Entries,0),0)}}</td>
+        <td>{{round(min((champion.Totalchampionkills+champion.TotalAssists)/champion.Totaldeathspersession,1),2)}}</td>
+        <td>{{round(champion.Totalgoldearned/champion.Entries/round(champion.Totalsessionsplayed/champion.Entries,0),0)}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

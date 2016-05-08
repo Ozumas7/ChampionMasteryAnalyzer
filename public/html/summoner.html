@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block head %}
+{{ parent() }}
+{% endblock %}
+{% block content %}
+<section class="summoner_details">
+        <article class="summoner_info_detail">
+            <div class="summoner_tier">
+        <b> {{summoner.name}}</b>
+        <img src="{{tierLink(league.tier)}}" width="80">
+            <b>{{league.tier}} {{league.entry.division}}</b>
+        {{league.entry.leaguePoints}} points
+            </div>
+            <div class="summoner_tier">
+                <h1>Ranked stats</h1>
+            <table>
+                <thead>
+                <tr>
+                    <th>Total played</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Win ratio</th>
+                    <th>Points</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{league.entry.wins+league.entry.losses}}</td>
+                    <td>{{league.entry.wins}}</td>
+                    <td>{{league.entry.losses}}</td>
+                    <td>{{round((league.entry.wins*100)/(league.entry.wins+league.entry.losses),0)}}</td>
+                    <td>{{league.entry.leaguePoints}}</td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </article>
+    <nav class="summoner_nav">
+        <ul>
+            <li class="tab-summoners tab-active" data-show="summoner_champions">Champions</li>
+            <li class="tab-summoners" data-show="summoner_charts">Charts</li>
+        </ul>
+    </nav>
+    <article class="summoner_stats" id="summoner_champions">
+        <h1>Champions</h1>
+        <table class="table_statistics">
+            <thead>
+            <tr>
+                <th>Champion</th>
+                <th>Champion Mastery points</th>
+                <th>Games Won/Lost/Total</th>
+                <th>KDA</th>
+                <th>Gold avg.</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for champion in data %}
+            <tr>
+                <td><a href="{{serverHost}}/champion/{{champName(champion.Championid)}}">{{getChampImage(champion.Championid,40)}}
+                    {{champName(champion.Championid)}}</a> </td>
+                <td>{{champion.Points}}</td>
+                <td><span class="green">{{champion.Totalsessionswon}}</span>/
+                    <span class="red">{{champion.Totalsessionslost}}</span>/{{champion.Totalsessionsplayed}}</td>
+                <td>{{round((champion.Totalchampionkills+champion.Totalassists)/
+                    max(champion.Totaldeathspersession,1),2)}}</td>
+                <td>{{round(champion.Totalgoldearned/champion.Totalsessionsplayed,0)}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </article>
+    <article id="summoner_charts" style="display:none" class="summoner_stats">
+        <h1>Charts</h1>
+        <article class="home_rows">
+            <h3>Mastery champion points / Win Ratio</h3>
+            <div id="winratio_chart" class="chart"></div>
+        </article>
+        <article class="home_rows">
+            <h3>Mastery champion points / Total KDA</h3>
+            <div id="kda_chart" class="chart"></div>
+        </article>
+        <article class="home_rows">
+            <h3>Mastery champion points / Gold earned per Match</h3>
+            <div id="gold_chart" class="chart"></div>
+        </article>
+        <article class="home_rows">
+            <h3>Mastery champion points / Gold earned per Match</h3>
+            <div id="played_chart" class="chart"></div>
+        </article>
+    </article>
+</section>
+<script>
+    var winratiopoints =[{% for data in points %} [{{data['interval']}},{{data['Winratio']}}], {% endfor %}];
+    var goldpoints = [{% for data in points %} [{{data['interval']}},{{data['Totalgoldearned']/data['Totalsessionsplayed']}}], {% endfor %}];
+    var kdapoints = [{% for data in points %} [{{data['interval']}},{{round((data['Totalchampionkills']+data['Totalassists'])/min(data['Totaldeathspersession'],1),2)}}], {% endfor %}];
+    var matchespoints = [{% for data in points %} [{{data['interval']}},{{data['Totalsessionsplayed']}}], {% endfor %}];
+    google.charts.load('current', {packages: ['corechart', 'line']});
+</script>
+{% endblock %}

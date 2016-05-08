@@ -1,0 +1,356 @@
+$primarycolor: #1d425e;
+$fontcolor: #333;
+$fontcolor2: #FFF;
+$black:#333;
+
+body{
+  @extend .bborder;
+  font-family: 'Poppins', sans-serif;
+  color: $fontcolor2;
+  background-image: url(http://na.leagueoflegends.com/sites/default/files/upload/art/shadow_isles_1920x1080.jpg);
+  background-repeat:no-repeat;
+  background-attachment: fixed;
+  background-color: $fontcolor;
+  margin:20px;
+}
+select{
+  @extend .bpadding;
+  outline: none;
+  margin-left:3px;
+  margin-right:3px;
+  font-family: 'Poppins', sans-serif;
+  color: $fontcolor;
+}
+.threeRows{
+  min-width:33%;
+  max-width:33%;
+}
+a,a:link,a:visited{
+  color: #4873d6;
+  text-decoration: none;
+}
+a:hover{
+  color:$primarycolor;
+}
+.header{
+@extend .bpadding;
+  background-color: rgba(29,66,94,0.8);
+  color: $fontcolor2;
+  > *{
+    @extend .rows,.textShadow, .threeRows;
+    a:link,a:visited{
+      @extend .link;
+      color:$fontcolor2;
+    }
+  }
+  nav{
+      li {
+        @extend .horizontallist;
+    }
+  }
+}
+
+.wrapper{
+  @extend .bboxShadow;
+}
+main{
+  padding:12px  3% 0 3%;
+  color: $fontcolor;
+  background-color: rgba(255,255,255,0.98);
+}
+
+.rows{
+  display:inline-table;
+}
+
+.border{
+  border:solid $black;
+}
+.nborder{
+  @extend .border;
+  border:2px;
+}
+.bborder{
+  @extend .border;
+  border:5px;
+}
+.twoRows{
+  min-width:45%;
+  max-width:45%;
+}
+
+.horizontallist{
+    display: inline-block;
+    list-style-image: none;
+    padding-right:5%;
+}
+.nospaces{
+  margin:0;
+  padding:0;
+}
+
+.link{
+  text-decoration: none;
+}
+
+.npadding{
+  padding:5px;
+}
+
+.bpadding{
+  padding:12px;
+}
+
+.bboxShadow{
+  box-shadow: 0 0 29px 0 rgba(0,0,0,0.75);
+}
+
+.nboxShadow{
+  box-shadow: 0 0 8px 0 rgba(0,0,0,0.75);
+}
+
+input{
+  @extend .bpadding;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  color: $fontcolor;
+}
+input[type=text]{
+  width:60%;
+}
+
+input[type=submit]{
+  @extend .button;
+}
+
+.textShadow{
+  text-shadow: rgb(3, 3, 3) 2px 3px 1px;
+}
+
+.nborderRadius{
+  border-radius:5px;
+}
+
+.button{
+  @extend .bpadding, .bborder, .link, .nborderRadius;
+  background-color: $primarycolor;
+  margin:5px;
+  cursor:pointer;
+  color: $fontcolor2;
+}
+footer{
+  margin-top:100px;
+  padding-left: 10%;
+  padding-bottom:20px;
+  padding-right:10%;
+}
+.inline{
+  display:inline-table;
+}
+.tier_info{
+@extend .inline, .twoRows;
+  img{
+@extend .inline;
+  }
+}
+.champion_info{
+  display:inline-table;
+  min-width:20%;
+  max-width:20%;
+}
+
+.summoner_info{
+  >*{
+    display:inline-table;
+  }
+
+}
+
+
+.summoner_details{
+  padding-left:10%;
+
+  padding-right:10%;
+}
+.table_matches{
+  width:80%;
+  border:1px solid #000;
+}
+
+.home_rows{
+  min-width:45%;
+  max-width:45%;
+  display:inline-table;
+}
+
+.tablesorter-headerDesc {
+  background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7)!important;
+}
+
+.tablesorter-headerDesc,.tablesorter-headerAsc{
+  background-color: #398cc3;
+}
+img{
+  vertical-align:top;
+}
+
+.summoner_tier{
+  display:inline-table;
+  >*{
+    display:block;
+  }
+  >table{
+    display:table;
+  }
+}
+
+.summoner_info_detail{
+  width:100%;
+  border-radius:7px;
+  background-color: #EEE;
+  padding:5px;
+    border:1px solid #EEE;
+  >*{
+    min-width:20%;
+    max-width:40%;
+    display:inline-table;
+  }
+}
+.summoner_icon{
+  border:1px solid #000;
+  border-radius:3px;
+}
+.tablesorter-header {
+  background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==);
+  background-repeat: no-repeat;
+  background-position: center right;
+  padding: 4px 18px 4px 4px;
+  white-space: normal;
+  cursor: pointer;
+}
+
+.tablesorter-headerAsc {
+  background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7);
+}
+
+.chart{
+  border:2px solid #AAA;
+}
+.best_average_champ{
+  @extend .home_rows;
+}
+
+.champion_stats{
+  display:inline-table;
+  max-width:70%;
+}
+.champion_info{
+  @extend .twoRows, .inline;
+  header{
+    display:block;
+  }
+}
+.champion_details{
+  @extend .textShadow;
+  max-width:1215px;
+  border-radius:5px;
+  padding:20px;
+  color:$fontcolor2;
+  h1{
+    margin:2px;
+    display:inline;
+    font-size:1.7em;
+  }
+  h2{
+    margin:1px;
+    display:inline;
+    font-size:1.3em;
+  }
+}
+.table_statistics{
+  table-layout: fixed;
+  font-size:0.8em;
+}
+.green{
+  color: #59bb5b;
+}
+.red{
+  color: #bb4d41;
+}
+table{
+  border:1px solid #AAA;
+  background-color: #FFF;
+  width:100%;
+  text-shadow: none;
+  font-size:0.7em;
+  border-collapse: collapse;
+  text-align: center;
+  thead{
+    tr{
+      th{
+        cursor:pointer;
+        margin:0;
+        color:$fontcolor2;
+        background-color: $primarycolor;
+        padding: 10px;
+      }
+    }
+  }
+  tbody{
+    tr{
+      border:1px solid #DDD;
+      td{
+        padding:5px;
+        color:$fontcolor;
+        border-right:1px solid #DDD;
+      }
+      td:first-child{
+        text-align: left;
+      }
+    }
+    tr:nth-child(even){
+      background-color: #EEE;
+    }
+  }
+}
+.pick_champion{
+  padding-left:10%;
+  padding-right:10%;
+}
+
+.champion_info_image{
+  > *{
+    display:block;
+  }
+}
+.individual_champ{
+  display:inline-block;
+  margin:10px;
+  a{
+    display:block;
+  }
+  img{
+    display:block;
+  }
+}
+
+small{
+  font-size:0.7em;
+}
+
+.summoner_nav{
+    >ul>li{
+      display:inline-table;
+      text-decoration:none;
+      padding:7px;
+      background-color:$primarycolor;
+      color:#FFF;
+      font-size:0.8em;
+      border-radius:5px;
+      cursor:pointer;
+    }
+}
+.tab-active{
+  background-color: #3d7eb9!important;
+  border:1px solid #e3dd4b;
+}
