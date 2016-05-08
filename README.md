@@ -82,7 +82,7 @@ So my decision of built this with a task system turned good because I could make
 So once we have data we can represent it in the website, charts is worth explaining because tables are not hard to understand how they works.
 
 ###Charts
-A table "champions" contains every single entry of champion of every single summoner analyzed. These data is grouped in intervals of amount of champion mastery points and some stats and then points are generated to Google Charts to compare champion mastery points with other stats.
+A table "champions" contains every single entry of champion of every single summoner analyzed. These data is grouped in intervals of amount of champion mastery points and some stats and then points are share with Google Charts to compare champion mastery points with other stats.
 
 #Demo
 I've upload this project into a free hosting so you can see a demo here: http://championmasteryanalyzer.esy.es/
