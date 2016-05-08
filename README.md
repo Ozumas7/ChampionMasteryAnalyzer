@@ -34,9 +34,9 @@ From the website perpective it is used a simple Model View Controller Service Ro
 
 - **[Plol](//github.com/Ozumas7/plol)**: Plol is a wrapper for PHP of the League of Legends API library made by myself, some of it features is: caching, rate limiter handling, the possibility of adding new output modes, tested, scalable etc...
 - **[Propel Orm](http://propelorm.org/)**: is the ORM library  for php (Object Relational mapping) used to handle the access to the database
- **[Twig](http://twig.sensiolabs.org/)**: Twig is a powerful php template engine use for views and it add extra logic to views.
- **[Symfony http-foundation](http://symfony.com/doc/current/components/http_foundation/introduction.html)**:The Symfony http-foundation is a component that makes easy to get http request and send them. Used by the Router, Controllers and Router Dispatcher to retrieve requests and send responses.
- **[Monolog](https://github.com/Seldaek/monolog)**: Used to log exceptions and error. Monolog is a library that makes log easy.
+- **[Twig](http://twig.sensiolabs.org/)**: Twig is a powerful php template engine use for views and it add extra logic to views.
+- **[Symfony http-foundation](http://symfony.com/doc/current/components/http_foundation/introduction.html)**:The Symfony http-foundation is a component that makes easy to get http request and send them. Used by the Router, Controllers and Router Dispatcher to retrieve requests and send responses.
+- **[Monolog](https://github.com/Seldaek/monolog)**: Used to log exceptions and error. Monolog is a library that makes log easy.
 
 
 ###Frontend 
