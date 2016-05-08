@@ -229,6 +229,14 @@ img{
   cursor: pointer;
 }
 
+.intervals_picker{
+  div{
+    display:inline-table;
+    >*{
+      display:block;
+    }
+  }
+}
 .tablesorter-headerAsc {
   background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7);
 }

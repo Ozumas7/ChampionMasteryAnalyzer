@@ -64,7 +64,7 @@
                     <span class="red">{{champion.Totalsessionslost}}</span>/{{champion.Totalsessionsplayed}}</td>
                 <td>{{round((champion.Totalchampionkills+champion.Totalassists)/
                     max(champion.Totaldeathspersession,1),2)}}</td>
-                <td>{{round(champion.Totalgoldearned/champion.Totalsessionsplayed,0)}}</td>
+                <td>{{round(champion.Totalgoldearned/max(champion.Totalsessionsplayed,1),0)}}</td>
             </tr>
             {% endfor %}
             </tbody>
@@ -72,6 +72,26 @@
     </article>
     <article id="summoner_charts" style="display:none" class="summoner_stats">
         <h1>Charts</h1>
+        <form method="GET" name="form_intervals_pick" class="intervals_picker">
+            <div>
+                <b>First Interval:</b>
+                <input type="number" placeholder="First Interval" value="{{intervals[0]}}" name="initial">
+            </div>
+            <div>
+                <b>Last Interval:</b>
+                <input type="number" placeholder="Last Interval" value="{{intervals[1]}}" name="final">
+            </div>
+            <div>
+                <b>Interval amount:</b>
+                <input type="number" placeholder="Interval" value="{{intervals[2]}}" name="interval">
+            </div>
+            <div>
+                <br>
+                <input type="submit" class="button" value="New Intervals">
+            </div>
+
+        </form>
+
         <article class="home_rows">
             <h3>Mastery champion points / Win Ratio</h3>
             <div id="winratio_chart" class="chart"></div>

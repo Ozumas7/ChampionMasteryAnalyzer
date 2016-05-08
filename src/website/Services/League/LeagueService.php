@@ -10,9 +10,9 @@ use Kolter\Website\Service;
 class LeagueService extends Service
 {
 
-    public static function getLeagueBySummonerId($summonerId){
+    public static function getLeagueBySummonerId($summonerId,$region){
         $league = new League(self::$apikey);
-        $league->setCacheTimeExpired(30)->setOutputMode(new ArrayOutput());
+        $league->setCacheTimeExpired(30)->setRegion($region)->setOutputMode(new ArrayOutput());
         $league->bysummonerentry($summonerId);
         return $league->bysummonerentry($summonerId);
     }
@@ -21,6 +21,7 @@ class LeagueService extends Service
         $league = new League(self::$apikey);
         $league->setCacheTimeExpired(30)->setRegion($region)->setOutputMode(new ArrayOutput());
         $league->challenger('&type=RANKED_SOLO_5x5');
+        var_dump($league->getUriResource());
         return $league->challenger('&type=RANKED_SOLO_5x5');
     }
     public static function getMasters($region='euw'){
