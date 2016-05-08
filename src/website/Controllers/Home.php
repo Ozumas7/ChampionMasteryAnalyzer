@@ -5,7 +5,6 @@ namespace Kolter\Website\Controllers;
 
 
 use Kolter\Website\Controller;
-use Kolter\Website\Services\Database\ChampionService;
 use Kolter\Website\Services\Database\Proxies\ChampionServiceProxy;
 use Kolter\Website\Services\League\StaticDataService;
 use Kolter\Website\View;

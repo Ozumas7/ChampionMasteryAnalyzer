@@ -3,9 +3,9 @@
 namespace Kolter\DataProcessing\Services\League;
 
 
+use Kolter\DataProcessing\Service;
 use Kolter\PLoL\OutputModes\ArrayOutput;
 use Kolter\PLoL\Resources\Stats;
-use Kolter\Website\Service;
 
 class StatsService extends Service
 {

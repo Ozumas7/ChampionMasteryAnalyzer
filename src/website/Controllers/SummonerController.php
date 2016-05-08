@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Pablo
- * Date: 05/05/2016
- * Time: 19:22
- */
 
 namespace Kolter\Website\Controllers;
 
@@ -21,7 +15,7 @@ use Kolter\Website\View;
 
 class SummonerController extends Controller
 {
-    public static function show($params,$method){
+    public static function show($params){
         $key = urldecode($params['key']);
         $summoner = SummonerService::getSummonerByName($key,$params['region']);
         if (!$summoner){

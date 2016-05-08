@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Kolter\Website;
+namespace Kolter\DataProcessing;
 
 
 use Kolter\PLoL\OutputModes\ObjectOutput;

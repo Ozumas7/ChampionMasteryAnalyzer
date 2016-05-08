@@ -6,7 +6,6 @@ namespace Kolter\Website\Controllers;
 use Kolter\Website\Controller;
 use Kolter\Website\Services\League\StaticDataService;
 use Kolter\Website\Util;
-use Kolter\Website\View;
 
 class SearchController extends Controller
 {

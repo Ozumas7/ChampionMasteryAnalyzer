@@ -2,7 +2,7 @@
 
 namespace Kolter\Website\Services\Database;
 
-r;
+
 use Kolter\Website\Service;
 
 class AnalyzerService extends Service

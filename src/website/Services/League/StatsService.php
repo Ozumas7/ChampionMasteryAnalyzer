@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Pablo
- * Date: 29/04/2016
- * Time: 16:50
- */
 
 namespace Kolter\Website\League\Services;
 

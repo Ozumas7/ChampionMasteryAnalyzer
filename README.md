@@ -90,6 +90,57 @@ Examples of urls:
 http://championmasteryanalyzer.esy.es/champion/Ezreal
 http://championmasteryanalyzer.esy.es/summoner/Ozumas/euw
 
+#How to built this project?
+
+First of all, download the project. Make sure you have installed [Composer](https://getcomposer.org/).
+
+Once you have installed composer, open a console in the project's folder and type:
+
+```cmd
+composer install
+```
+
+Now we will setup the database. Create a Mysql database and execute the *sql/mastery.sql* file in the database. This will create the main tables.
+
+The next step is to config the *config/config.php* file that is a propel ORM config file. This part is what you have to edit, replacing words in brackets with your own config.
+```php
+<?php
+..............
+  'dsn' => 'mysql:host={{mysqlhost}};dbname={{dbname}}',
+  'user' => '{{user}}',
+  'password' => '{{pass}}',
+...............
+
+```
+
+Then edit the **config/server.yaml** file with your own information
+```yaml
+url: "{{your web base uri}}"
+riotapikey: "{{yourapikey}}"
+```
+So the website is ready, now what you need are summoner ids entries to analyze and process champion data. For that you may want to use some methods that is done already to submit all the challenger and master summoners ids.
+To do that you can make a php file and execute it in console for example.
+
+```php
+include 'path/to/vendor/autoload.php'
+//This will add all the champion summoner ids of challenger and master summoners
+//of the given region
+ProcessSummoners::getChallengersAndMastersIds('euw');
+ProcessSummoners::getChallengersAndMastersIds('kr');
+ProcessSummoners::getChallengersAndMastersIds('na');
+//You can now process Ids that are not processed, the number indicate the amount
+//of ids you want to process.
+ProcessId::processIds(100);
+```
+
+Also, when a summoner is searched in the search bar his id is automatically added and processed. 
+To add more ids and process them by your own you can use this method:
+```php
+Kolter\DataProcessing\Processes::addId($id,$region);
+Kolter\DataProcessing\Processes::processId($id,$region);
+```
+
+
 #Side Note
 
 I know my code is not good enough and could have done things most easily and more scalable but I am still learning and this project gave me a motivation to get better at programming and to face real problems with big data and analyzing (something I haven't face before).

@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Pablo
- * Date: 20/03/2016
- * Time: 14:43
- */
+
 
 namespace Kolter\Website\Views\TwigExtensions;
 

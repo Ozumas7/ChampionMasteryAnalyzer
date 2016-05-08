@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Pablo
- * Date: 22/04/2016
- * Time: 19:04
- */
+
 
 namespace Kolter\Website;
 
@@ -24,7 +19,7 @@ class Controller
         return $response;
     }
 
-    public static function errorResponse($content,$code){
+    public static function errorResponse($content){
         $response = new Response(
             'Content',
             Response::HTTP_BAD_REQUEST,

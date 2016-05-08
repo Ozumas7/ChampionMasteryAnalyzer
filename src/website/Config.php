@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Pablo
- * Date: 28/04/2016
- * Time: 18:13
- */
+
 
 namespace Kolter\Website;
 

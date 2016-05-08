@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Pablo
- * Date: 06/05/2016
- * Time: 21:10
- */
+
 
 namespace Kolter\Website\Services\Database\Proxies;
 

@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Pablo
- * Date: 28/04/2016
- * Time: 19:54
- */
+
 
 namespace Kolter\Website\Services\League;
 
 
 use Kolter\PLoL\OutputModes\ArrayOutput;
-use Kolter\PLoL\OutputModes\ObjectOutput;
 use Kolter\PLoL\Resources\Summoner;
 use Kolter\Website\Service;
 
