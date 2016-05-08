@@ -27,8 +27,5 @@
       "Kolter\\DataProcessing\\": "src/dataprocessing",
       "Kolter\\DataBase\\": "src/database"
     }
-  },
-  "autoload-dev": {
-    "psr-4": { "Kolter\\RankedSimulator\\Tests\\": "tests/" }
   }
 }
