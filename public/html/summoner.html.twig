@@ -110,11 +110,21 @@
         </article>
     </article>
 </section>
-<script>
-    var winratiopoints =[{% for data in points %} [{{data['interval']}},{{data['Winratio']}}], {% endfor %}];
-    var goldpoints = [{% for data in points %} [{{data['interval']}},{{data['Totalgoldearned']/data['Totalsessionsplayed']}}], {% endfor %}];
-    var kdapoints = [{% for data in points %} [{{data['interval']}},{{round((data['Totalchampionkills']+data['Totalassists'])/min(data['Totaldeathspersession'],1),2)}}], {% endfor %}];
-    var matchespoints = [{% for data in points %} [{{data['interval']}},{{data['Totalsessionsplayed']}}], {% endfor %}];
-    google.charts.load('current', {packages: ['corechart', 'line']});
-</script>
+    <script>
+        var winratiopoints =[{% for data in points %} [{{data['interval']}},{{data['Winratio']}}], {% endfor %}];
+        var goldpoints = [{% for data in points %} [{{data['interval']}},{{data['Totalgoldearned']/data['Totalsessionsplayed']}}], {% endfor %}];
+        var kdapoints = [{% for data in points %} [{{data['interval']}},{{round((data['Totalchampionkills']+data['Totalassists'])/min(data['Totaldeathspersession'],1),2)}}], {% endfor %}];
+        var matchespoints = [{% for data in points %} [{{data['interval']}},{{data['Totalsessionsplayed']}}], {% endfor %}];
+        var winratio=[{points:winratiopoints,title:'{{ champion.name }} Winratio'}];
+        var gold=[{points:goldpoints,title:'{{ champion.name }} Gold avg.'}];
+        var matches=[{points:matchespoints,title:'{{ champion.name }} Matches played'}];
+        var kda = [{points:kdapoints,title:'{{ champion.name }} KDA'}];
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(function(){
+            drawGraphics(winratio,'winratio');
+            drawGraphics(gold,'gold');
+            drawGraphics(kda,'kda');
+            drawGraphics(matches,'played');
+        });
+    </script>
 {% endblock %}
