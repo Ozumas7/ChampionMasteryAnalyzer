@@ -33,7 +33,7 @@ a:hover{
   color:$primarycolor;
 }
 .header{
-@extend .bpadding;
+  @extend .bpadding;
   background-color: rgba(29,66,94,0.8);
   color: $fontcolor2;
   > *{
@@ -44,8 +44,8 @@ a:hover{
     }
   }
   nav{
-      li {
-        @extend .horizontallist;
+    li {
+      @extend .horizontallist;
     }
   }
 }
@@ -80,9 +80,9 @@ main{
 }
 
 .horizontallist{
-    display: inline-block;
-    list-style-image: none;
-    padding-right:5%;
+  display: inline-block;
+  list-style-image: none;
+  padding-right:5%;
 }
 .nospaces{
   margin:0;
@@ -148,9 +148,9 @@ footer{
   display:inline-table;
 }
 .tier_info{
-@extend .inline, .twoRows;
+  @extend .inline, .twoRows;
   img{
-@extend .inline;
+    @extend .inline;
   }
 }
 .champion_info{
@@ -209,7 +209,7 @@ img{
   border-radius:7px;
   background-color: #EEE;
   padding:5px;
-    border:1px solid #EEE;
+  border:1px solid #EEE;
   >*{
     min-width:20%;
     max-width:40%;
@@ -236,6 +236,10 @@ img{
       display:block;
     }
   }
+  padding:15px;
+  background-color:#EEE;
+  border:1px solid #DDD;
+  border-radius:7px;
 }
 .tablesorter-headerAsc {
   background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7);
@@ -248,6 +252,15 @@ img{
   @extend .home_rows;
 }
 
+.goog-tooltip{
+  color:#000;
+  div{
+    color:#000;
+    padding:25px!important;
+    background-color: #EEE!important;
+  }
+}
+
 .champion_stats{
   display:inline-table;
   max-width:70%;
@@ -258,6 +271,8 @@ img{
     display:block;
   }
 }
+
+
 .champion_details{
   @extend .textShadow;
   max-width:1215px;
@@ -347,16 +362,16 @@ small{
 }
 
 .summoner_nav{
-    >ul>li{
-      display:inline-table;
-      text-decoration:none;
-      padding:7px;
-      background-color:$primarycolor;
-      color:#FFF;
-      font-size:0.8em;
-      border-radius:5px;
-      cursor:pointer;
-    }
+  >ul>li{
+    display:inline-table;
+    text-decoration:none;
+    padding:7px;
+    background-color:$primarycolor;
+    color:#FFF;
+    font-size:0.8em;
+    border-radius:5px;
+    cursor:pointer;
+  }
 }
 .tab-active{
   background-color: #3d7eb9!important;

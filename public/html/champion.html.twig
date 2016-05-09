@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layout.html.twig" %}
 {% block head %}
 {{ parent() }}
 {% endblock %}
@@ -8,8 +8,7 @@
  background-repeat:no-repeat">
    <article class="champion_info">
        <div class="champion_info_image">
-    <a href="{{championLink(champion.id)}}">{{getChampImage(champion.id,100)}}
-        <b>{{champName(bestChamp.Champion)}}</b></a>
+   {{getChampImage(champion.id,100)}}
        <h1>{{champion.name}} </h1>
        </div>
    </article>
@@ -42,7 +41,8 @@
     </article>
 </section>
 <h1>Charts</h1>
-<form method="GET" name="form_intervals_pick" class="intervals_picker">
+    <article>
+<form method="GET" name="form_intervals_pick" class="intervals_picker" >
     <div>
         <b>First Interval:</b>
     <input type="number" placeholder="First Interval" value="{{intervals[0]}}" name="initial">
@@ -59,8 +59,24 @@
         <br>
     <input type="submit" class="button" value="New Intervals">
     </div>
-
-</form>
+    <div>
+    <b>Compare with:</b>
+    <select id="compare_champions" title="compare champions" name="compare">
+        <option value=""><i>none</i></option>
+        {% for value in champions %}
+            <option value="{{ value.key }}" {% if compare.name==value.name %} selected {% endif %}>{{ value.name }}</option>
+        {% endfor %}
+    </select>
+    </div>
+    <div>
+        <br>
+        <input type="submit" value="compare"/>
+    </div>
+    </form>
+        {% if compare!=false %}
+            <h2 class="red">Comparing with {{ compare.name }}</h2>
+        {% endif %}
+    </article>
 <article class="home_rows">
     <h3>Mastery champion points / Win Ratio</h3>
 <div id="winratio_chart" class="chart"></div>
@@ -84,7 +100,26 @@
     var goldpoints = [{% for data in points %} [{{data['interval']}},{{data['Totalgoldearned']/data['Totalsessionsplayed']}}], {% endfor %}];
     var kdapoints = [{% for data in points %} [{{data['interval']}},{{round((data['Totalchampionkills']+data['Totalassists'])/min(data['Totaldeathspersession'],1),2)}}], {% endfor %}];
     var matchespoints = [{% for data in points %} [{{data['interval']}},{{data['Totalsessionsplayed']}}], {% endfor %}];
+    var winratio=[{points:winratiopoints,title:'{{ champion.name }} Winratio'}];
+    var gold=[{points:goldpoints,title:'{{ champion.name }} Gold avg.'}];
+    var matches=[{points:matchespoints,title:'{{ champion.name }} Matches played'}];
+    var kda = [{points:kdapoints,title:'{{ champion.name }} KDA'}];
+    {% if compare==true %}
+    var comparewinratiopoints= [{% for data in compare.points %} [{{data['interval']}},{{data['Winratio']}}], {% endfor %}];
+    var comparegoldpoints= [{% for data in compare.points %} [{{data['interval']}},{{data['Totalgoldearned']/data['Totalsessionsplayed']}}], {% endfor %}];
+    var comparekdapoints= [{% for data in compare.points %} [{{data['interval']}},{{round((data['Totalchampionkills']+data['Totalassists'])/min(data['Totaldeathspersession'],1),2)}}], {% endfor %}];
+    var comparematchespoints= [{% for data in compare.points %} [{{data['interval']}},{{data['Totalsessionsplayed']}}], {% endfor %}];
+    winratio.push({points:comparewinratiopoints ,title:'{{ compare.name }} Winratio'});
+    gold.push({points:comparegoldpoints ,title:'{{ compare.name }} Gold avg.'});
+    matches.push({points:comparematchespoints,title:'{{ compare.name }} Matches played'});
+   kda.push({points:comparekdapoints,title:'{{ compare.name }} KDA'});
+    {% endif %}
     google.charts.load('current', {packages: ['corechart', 'line']});
-    google.charts.setOnLoadCallback(drawGraphics);
+    google.charts.setOnLoadCallback(function(){
+        drawGraphics(winratio,'winratio');
+        drawGraphics(gold,'gold');
+        drawGraphics(kda,'kda');
+        drawGraphics(matches,'played');
+    });
 </script>
 {% endblock %}

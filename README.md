@@ -9,9 +9,9 @@ The contest was about [Champion Mastery](http://na.leagueoflegends.com/en/page/f
 The purpose of the project is to provide correlation  betweeen points of champion mastery and other stats like win rate, gold earned, kda etc..
 
 So what **ChampionMasteryAnalyzer** does is to process summoners across regions and get all the information about champion mastery. Then it offers charts comparing the amout of champion mastery points in champions with other stats like winratio, gold earned, kda etc...
-It is also available to search a summoner name and see this charts of the given summoner.
+Some special features are: searching a summoner and see its charts, compare champions charts and use custom intervals.
 
-So everyone can makes his own conclusion about how champion mastery points affects stats.
+So everyone can makes his own conclusion about how champion mastery points affects other stats. 
 **For example:** a champion easy to use, maybe, increases his performance with champion mastery points worst than a champion harder to use.
 
 The strength of this project is **charts**, they offers an easy look of the impact of champion mastery points and how it is related with some stats.

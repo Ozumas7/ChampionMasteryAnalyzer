@@ -25,18 +25,23 @@ class ChampionController extends Controller
         }
         $champion = ($championByKey==true) ? $championByKey : $championByName;
         $data = ChampionsService::getAllChampionsById($champion['id']);
+        $champions =StaticDataService::getChampions();
+        ksort($champions);
         $total = sizeof($data);
         $statChampion = ChampionServiceProxy::getChampionById($champion['id']);
         $intervals = self::getIntervals($query);
         $points = AnalyzerService::getIntervals($data,$intervals);
+        $compare = self::compareChampions($query,$intervals);
         $intervalsGET=array_keys($intervals);
         $intervalsGET = [$intervalsGET[0],$intervalsGET[sizeof($intervalsGET)-1],$intervalsGET[1]-$intervalsGET[0]];
         $total_entries = ChampionService::getTotalEntries();
         return self::successResponse(View::getTemplate('champion',
             ['points'=>$points,'total'=>$total,'champion'=>$champion,
                 'stats'=>$statChampion,'total_entries'=>$total_entries,'title'=>ucwords($key),
-                'intervals'=>$intervalsGET],
-            $champion['id'].serialize($query)));
+                'intervals'=>$intervalsGET,
+                'champions'=>$champions,
+                'compare'=>$compare],
+            false));
     }
 
     public static function getIntervals($query){
@@ -54,6 +59,19 @@ class ChampionController extends Controller
             $result[$i]=[];
         }
         return $result;
+    }
+
+    public static function compareChampions($query,$intervals){
+        extract($query);
+        if (!isset($compare) or !is_string($compare)) return false;
+        $championByKey = StaticDataService::getChampionByKey($compare);
+        $championByName = StaticDataService::getChampionByName($compare);
+        if ($championByKey==false && $championByName==false){
+            return false;
+        }
+        $champion = ($championByKey==true) ? $championByKey : $championByName;
+        $data = ChampionsService::getAllChampionsById($champion['id']);
+        return ['points'=>AnalyzerService::getIntervals($data,$intervals),'name'=>$champion['name']];
     }
 
 }
