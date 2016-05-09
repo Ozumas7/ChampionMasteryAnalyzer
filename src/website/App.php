@@ -9,6 +9,7 @@ use Kolter\Website\Router\Router;
 use Monolog\ErrorHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use Kolter\DataProcessing\Service as ServiceDP;
 use Symfony\Component\HttpFoundation\Request;
 
 class App
@@ -23,6 +24,7 @@ class App
         $this->request = Request::createFromGlobals();
         Config::setConfig();
         Service::$apikey = Config::getRiotApiKey();
+        ServiceDP::$apikey = Config::getRiotApiKey();
         $this->setLogger();
     }
 
