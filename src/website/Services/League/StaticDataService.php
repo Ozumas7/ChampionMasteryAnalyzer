@@ -26,7 +26,9 @@ class StaticDataService extends Service
 
     public static function getChampionByKey($keyChampion){
         $champions = self::getChampions();
-        if (array_key_exists($keyChampion,$champions)) return $champions[$keyChampion];
+        foreach($champions as $key=>$value){
+            if (stristr($value['key'],$keyChampion)) return $value;
+        }
         return false;
     }
 
