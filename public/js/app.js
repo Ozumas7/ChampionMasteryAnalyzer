@@ -24,6 +24,9 @@ $(document).ready(function(){
         $('#'+data).show();
         $(this).addClass('tab-active');
         }
-        drawGraphics();
+        drawGraphics(winratio,'winratio');
+        drawGraphics(gold,'gold');
+        drawGraphics(kda,'kda');
+        drawGraphics(matches,'played');
     })
 });
