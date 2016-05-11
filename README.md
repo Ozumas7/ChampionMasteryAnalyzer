@@ -85,10 +85,14 @@ So once we have data we can represent it in the website, charts is worth explain
 A table "champions" contains every single entry of champion of every single summoner analyzed. These data is grouped in intervals of amount of champion mastery points and some stats and then points are share with Google Charts to compare champion mastery points with other stats.
 
 #Demo
-I've upload this project into a free hosting so you can see a demo here: http://championmasteryanalyzer.esy.es/
+I've upload this project into a free hosting so you can see a demo here: 
+
+http://championmasteryanalyzer.esy.es/
 Examples of urls:
 http://championmasteryanalyzer.esy.es/champion/Ezreal
 http://championmasteryanalyzer.esy.es/summoner/Ozumas/euw
+
+Please if the main url doesn't work for you (error 500), try the others, I can really find why it fails sometimes.
 
 #How to built this project?
 
